@@ -50,3 +50,6 @@ console.log(project.notDoneTodos);
 project.removeTodo("");
 project.removeTodo(" ");
 console.log(project.notDoneTodos);
+
+project.addTodo(todo2);
+project.doTodo(todo1);

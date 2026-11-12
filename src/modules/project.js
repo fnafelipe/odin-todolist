@@ -43,5 +43,14 @@ export class Project {
     }
   }
 
-
+  doTodo(todoToDo) {
+    if (todoToDo.constructor.name === "Todo") {
+      todoToDo.do();
+      
+      const [doneTodo] = this.#notDoneTodos.splice(
+        this.#notDoneTodos.indexOf(todoToDo, 1),
+      );
+      this.#doneTodos.push(doneTodo);
+    }
+  }
 }
