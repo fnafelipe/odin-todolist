@@ -22,8 +22,14 @@ export class Project {
   }
 
   rename(newTitle) {
-    if (typeof newTitle === "string") {
-      if (newTitle.trim()) this.#title = newTitle;
+    if (typeof newTitle === "string" && newTitle.trim()) {
+      this.#title = newTitle;
+    }
+  }
+
+  addTodo(todoToAdd) {
+    if (todoToAdd.trim()) {
+      this.#notDoneTodos.push(todoToAdd);
     }
   }
 }
@@ -39,3 +45,9 @@ project.rename("");
 project.rename(6);
 project.rename(true);
 console.log(project.title);
+
+project.addTodo("todo1");
+project.addTodo("todo2");
+project.addTodo("");
+project.addTodo(" ");
+console.log(project.notDoneTodos);
