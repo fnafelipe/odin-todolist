@@ -21,11 +21,11 @@ export class Project {
   }
 
   get doneTodos() {
-    return this.#doneTodos;
+    return [...this.#doneTodos];
   }
 
   get notDoneTodos() {
-    return this.#notDoneTodos;
+    return [...this.#notDoneTodos];
   }
 
   rename(newTitle) {
