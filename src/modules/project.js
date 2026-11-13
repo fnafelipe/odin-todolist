@@ -1,12 +1,18 @@
 export class Project {
+  #id;
   #title;
   #doneTodos;
   #notDoneTodos;
 
   constructor(title) {
+    this.#id = crypto.randomUUID();
     this.#title = title;
     this.#doneTodos = [];
     this.#notDoneTodos = [];
+  }
+
+  get id() {
+    return this.#id;
   }
 
   get title() {
@@ -46,7 +52,7 @@ export class Project {
   doTodo(todoToDo) {
     if (todoToDo.constructor.name === "Todo") {
       todoToDo.do();
-      
+
       const [doneTodo] = this.#notDoneTodos.splice(
         this.#notDoneTodos.indexOf(todoToDo, 1),
       );

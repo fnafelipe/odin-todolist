@@ -1,4 +1,5 @@
 export class Todo {
+  #id;
   #title;
   #description;
   #dueDate;
@@ -6,15 +7,15 @@ export class Todo {
   #isDone;
 
   constructor(title, description, dueDate, priority) {
+    this.#id = crypto.randomUUID();
     this.#title = title;
     this.#description = description;
     this.#dueDate = dueDate;
     this.#priority = priority;
     this.#isDone = false;
   }
-
-  do() {
-    this.#isDone = true;
+  get id() {
+    return this.#id;
   }
 
   get title() {
@@ -35,5 +36,9 @@ export class Todo {
 
   get isDone() {
     return this.#isDone;
+  }
+
+  do() {
+    this.#isDone = true;
   }
 }
