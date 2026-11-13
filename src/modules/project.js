@@ -1,3 +1,4 @@
+import { Todo } from "./todo.js";
 export class Project {
   #id;
   #title;
@@ -34,27 +35,35 @@ export class Project {
   }
 
   addTodo(todoToAdd) {
-    if (todoToAdd.constructor.name === "Todo") {
+    if (todoToAdd instanceof Todo) {
       this.#notDoneTodos.push(todoToAdd);
     }
   }
 
   removeTodo(todoToRemove) {
-    if (todoToRemove.constructor.name === "Todo") {
+    if (todoToRemove instanceof Todo) {
       if (todoToRemove.isDone) {
-        this.#doneTodos.splice(this.#doneTodos.indexOf(todoToRemove), 1);
+        if (this.#doneTodos.indexOf(todoToRemove) !== -1) {
+          this.#doneTodos.splice(this.#doneTodos.indexOf(todoToRemove), 1);
+        }
       } else {
-        this.#notDoneTodos.splice(this.#notDoneTodos.indexOf(todoToRemove));
+        if (this.#notDoneTodos !== -1) {
+          this.#notDoneTodos.splice(
+            this.#notDoneTodos.indexOf(todoToRemove),
+            1,
+          );
+        }
       }
     }
   }
 
   doTodo(todoToDo) {
-    if (todoToDo.constructor.name === "Todo") {
+    if (todoToDo instanceof Todo) {
       todoToDo.do();
 
       const [doneTodo] = this.#notDoneTodos.splice(
-        this.#notDoneTodos.indexOf(todoToDo, 1),
+        this.#notDoneTodos.indexOf(todoToDo),
+        1,
       );
       this.#doneTodos.push(doneTodo);
     }
