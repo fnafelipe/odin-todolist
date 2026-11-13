@@ -2,14 +2,12 @@ import { Todo } from "./todo.js";
 export class Project {
   #id;
   #title;
-  #doneTodos;
-  #notDoneTodos;
+  #todos;
 
   constructor(title) {
     this.#id = crypto.randomUUID();
     this.#title = title;
-    this.#doneTodos = [];
-    this.#notDoneTodos = [];
+    this.#todos = [];
   }
 
   get id() {
@@ -21,11 +19,11 @@ export class Project {
   }
 
   get doneTodos() {
-    return [...this.#doneTodos];
+    return this.#todos.filter((todo) => todo.isDone);
   }
 
-  get notDoneTodos() {
-    return [...this.#notDoneTodos];
+  get pendingTodos() {
+    return this.#todos.filter((todo) => !todo.isDone);
   }
 
   rename(newTitle) {
@@ -36,22 +34,15 @@ export class Project {
 
   addTodo(todoToAdd) {
     if (todoToAdd instanceof Todo) {
-      this.#notDoneTodos.push(todoToAdd);
+      this.#todos.push(todoToAdd);
     }
   }
 
   removeTodo(todoToRemove) {
     if (todoToRemove instanceof Todo) {
       if (todoToRemove.isDone) {
-        if (this.#doneTodos.indexOf(todoToRemove) !== -1) {
-          this.#doneTodos.splice(this.#doneTodos.indexOf(todoToRemove), 1);
-        }
-      } else {
-        if (this.#notDoneTodos !== -1) {
-          this.#notDoneTodos.splice(
-            this.#notDoneTodos.indexOf(todoToRemove),
-            1,
-          );
+        if (this.#todos.indexOf(todoToRemove) !== -1) {
+          this.#todos.splice(this.#todos.indexOf(todoToRemove), 1);
         }
       }
     }
@@ -60,12 +51,6 @@ export class Project {
   doTodo(todoToDo) {
     if (todoToDo instanceof Todo) {
       todoToDo.do();
-
-      const [doneTodo] = this.#notDoneTodos.splice(
-        this.#notDoneTodos.indexOf(todoToDo),
-        1,
-      );
-      this.#doneTodos.push(doneTodo);
     }
   }
 }
