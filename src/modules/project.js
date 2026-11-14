@@ -18,6 +18,10 @@ export class Project {
     return this.#title;
   }
 
+  get todos() {
+    return [...this.#todos];
+  }
+
   get doneTodos() {
     return this.#todos.filter((todo) => todo.isDone);
   }
@@ -40,10 +44,8 @@ export class Project {
 
   removeTodo(todoToRemove) {
     if (todoToRemove instanceof Todo) {
-      if (todoToRemove.isDone) {
-        if (this.#todos.indexOf(todoToRemove) !== -1) {
-          this.#todos.splice(this.#todos.indexOf(todoToRemove), 1);
-        }
+      if (this.#todos.indexOf(todoToRemove) !== -1) {
+        this.#todos.splice(this.#todos.indexOf(todoToRemove), 1);
       }
     }
   }
