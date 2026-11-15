@@ -1,12 +1,24 @@
-import { Project } from "./modules/project.js";
-import { Todo } from "./modules/todo.js";
 import { Controller } from "./modules/Controller.js";
 
 const controller = new Controller();
-console.table(controller)
+console.table(controller);
 
-controller.renameProject("Felipe")
-console.table(controller)
+controller.addTodoToProject(
+  "Buy bread",
+  "go to the grocery store and buy 6 buns",
+  "11/22/2026",
+  "important",
+);
+console.table(controller);
+
+controller.addTodoToProject(
+  "Clean House",
+  "pass the wop on the entira floor",
+  "11/26/2026",
+  "critical",
+);
+console.table(controller);
+
 
 
 /*
@@ -23,8 +35,6 @@ const todo2 = new Todo(
   "11/26/2026",
   "critical",
 );
-
-todo1.do();
 
 const project = new Project("Home");
 

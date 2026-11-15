@@ -23,19 +23,18 @@ export class Controller {
   }
 
   renameProject(newTitle) {
-    if (typeof newTitle === "string") {
+    if (typeof newTitle === "string" && newTitle.trim()) {
       this.#currentProject.rename(newTitle);
     }
   }
 
   addTodoToProject(title, description, dueDate, priority) {
-    const newProject = this.createTodo(
-      title,
-      description,
-      dueDate,
-      priority,
-    );
+    const newTodo = this.createTodo(title, description, dueDate, priority);
 
-    this.#currentProject.addTodo(newProject)
+    this.#currentProject.addTodo(newTodo);
+  }
+
+  removeTodoFromProject(todoId) {
+    this.#currentProject.removeTodo(todoId);
   }
 }
