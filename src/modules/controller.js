@@ -10,18 +10,32 @@ export class Controller {
     this.#currentProject = this.#projects[0];
   }
 
+  get projects() {
+    return [...this.#projects];
+  }
+
+  get currentProject() {
+    return this.#currentProject;
+  }
+
   changeCurrentProject(projectId) {
     const projectToChange = this.searchProject(projectId);
 
-    this.#currentProject = projectToChange;
+    if (projectToChange instanceof Project) {
+      this.#currentProject = projectToChange;
+    }
   }
 
   createTodo(title, description, dueDate, priority) {
     if (
       typeof title === "string" &&
+      title.trim() &&
       typeof description === "string" &&
+      description.trim() &&
       typeof dueDate === "string" &&
-      typeof priority === "string"
+      dueDate.trim() &&
+      typeof priority === "string" &&
+      priority.trim()
     ) {
       const newTodo = new Todo(title, description, dueDate, priority);
 
@@ -30,9 +44,9 @@ export class Controller {
   }
 
   createProject(title) {
-    if (typeof title === "string") {
+    if (typeof title === "string" && title.trim()) {
       const newProject = new Project(title);
-      
+
       return newProject;
     }
   }
@@ -46,7 +60,9 @@ export class Controller {
   addTodoToProject(title, description, dueDate, priority) {
     const newTodo = this.createTodo(title, description, dueDate, priority);
 
-    this.#currentProject.addTodo(newTodo);
+    if (newTodo instanceof Todo) {
+      this.#currentProject.addTodo(newTodo);
+    }
   }
 
   removeTodoFromProject(todoId) {
@@ -60,9 +76,9 @@ export class Controller {
   addProject(title) {
     const newProject = this.createProject(title);
 
-    this.#projects.push(newProject);
-
-    this.#currentProject = newProject;
+    if (newProject instanceof Project) {
+      this.#projects.push(newProject);
+    }
   }
 
   removeProject(projectId) {
@@ -70,6 +86,10 @@ export class Controller {
 
     if (projectToRemove instanceof Project) {
       if (this.#projects.indexOf(projectToRemove) !== -1) {
+        if (projectToRemove === this.#currentProject) {
+          this.#currentProject = this.#projects[0];
+        }
+
         this.#projects.splice(this.#projects.indexOf(projectToRemove), 1);
       }
     }
