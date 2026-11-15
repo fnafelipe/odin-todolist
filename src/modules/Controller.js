@@ -10,16 +10,31 @@ export class Controller {
     this.#currentProject = this.#projects[0];
   }
 
+  changeCurrentProject(projectId) {
+    const projectToChange = this.searchProject(projectId);
+
+    this.#currentProject = projectToChange;
+  }
+
   createTodo(title, description, dueDate, priority) {
-    const newTodo = new Todo(title, description, dueDate, priority);
-    console.table(newTodo);
-    return newTodo;
+    if (
+      typeof title === "string" &&
+      typeof description === "string" &&
+      typeof dueDate === "string" &&
+      typeof priority === "string"
+    ) {
+      const newTodo = new Todo(title, description, dueDate, priority);
+
+      return newTodo;
+    }
   }
 
   createProject(title) {
-    const newProject = new Project(title);
-    console.table(newProject);
-    return newProject;
+    if (typeof title === "string") {
+      const newProject = new Project(title);
+      
+      return newProject;
+    }
   }
 
   renameProject(newTitle) {
@@ -36,5 +51,36 @@ export class Controller {
 
   removeTodoFromProject(todoId) {
     this.#currentProject.removeTodo(todoId);
+  }
+
+  doTodoFromProject(todoId) {
+    this.#currentProject.doTodo(todoId);
+  }
+
+  addProject(title) {
+    const newProject = this.createProject(title);
+
+    this.#projects.push(newProject);
+
+    this.#currentProject = newProject;
+  }
+
+  removeProject(projectId) {
+    const projectToRemove = this.searchProject(projectId);
+
+    if (projectToRemove instanceof Project) {
+      if (this.#projects.indexOf(projectToRemove) !== -1) {
+        this.#projects.splice(this.#projects.indexOf(projectToRemove), 1);
+      }
+    }
+  }
+
+  searchProject(idToSearch) {
+    for (let project of this.#projects) {
+      if (project.id === idToSearch) {
+        return project;
+      }
+    }
+    return false;
   }
 }

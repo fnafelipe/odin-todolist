@@ -1,7 +1,6 @@
 import { Controller } from "./modules/Controller.js";
 
 const controller = new Controller();
-console.table(controller);
 
 controller.addTodoToProject(
   "Buy bread",
@@ -9,7 +8,6 @@ controller.addTodoToProject(
   "11/22/2026",
   "important",
 );
-console.table(controller);
 
 controller.addTodoToProject(
   "Clean House",
@@ -17,9 +15,10 @@ controller.addTodoToProject(
   "11/26/2026",
   "critical",
 );
-console.table(controller);
 
+controller.addProject("house");
 
+controller.addProject("work");
 
 /*
 const todo1 = new Todo(
