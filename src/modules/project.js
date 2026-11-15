@@ -42,7 +42,9 @@ export class Project {
     }
   }
 
-  removeTodo(todoToRemove) {
+  removeTodo(idToRemove) {
+    const todoToRemove = this.searchTodo(idToRemove);
+
     if (todoToRemove instanceof Todo) {
       if (this.#todos.indexOf(todoToRemove) !== -1) {
         this.#todos.splice(this.#todos.indexOf(todoToRemove), 1);
@@ -50,9 +52,20 @@ export class Project {
     }
   }
 
-  doTodo(todoToDo) {
+  doTodo(idToDo) {
+    const todoToDo = this.searchTodo(idToDo);
+
     if (todoToDo instanceof Todo) {
       todoToDo.do();
     }
+  }
+
+  searchTodo(idToSearch) {
+    for (let todo of this.#todos) {
+      if (todo.id === idToSearch) {
+        return todo;
+      }
+    }
+    return false;
   }
 }
