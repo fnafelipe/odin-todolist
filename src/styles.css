@@ -1,0 +1,52 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  grid-template-columns: 250px 1fr;
+  grid-template-areas: "title title" "projects todos";
+  width: 100%;
+  height: 100%;
+}
+
+.page-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  grid-area: title;
+  background-color: purple;
+  color: gold;
+}
+
+.projects-section {
+  display: flex;
+  padding: 25px;
+  flex-direction: column;
+  background-color: whitesmoke;
+}
+
+.projects-section h1 {
+  color: purple;
+  margin-bottom: 10px;
+}
+
+.projects-section h3 {
+  color: lightgray;
+  margin-top: 10px;
+}
+
+.todos-section {
+  display: grid;
+}

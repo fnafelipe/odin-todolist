@@ -2,24 +2,6 @@ import { Controller } from "./modules/controller.js";
 
 const controller = new Controller();
 
-controller.addTodoToProject(
-  "Buy bread",
-  "go to the grocery store and buy 6 buns",
-  "11/22/2026",
-  "important",
-);
-
-controller.addTodoToProject(
-  "Clean House",
-  "pass the wop on the entira floor",
-  "11/26/2026",
-  "critical",
-);
-
-controller.addProject("house");
-
-controller.addProject("work");
-
 /*
 const todo1 = new Todo(
   "Buy bread",
