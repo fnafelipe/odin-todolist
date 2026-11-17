@@ -4,10 +4,12 @@ import { Todo } from "./todo.js";
 export class Controller {
   #projects;
   #currentProject;
+  #currentTodo;
 
   constructor() {
     this.#projects = [new Project("all")];
     this.#currentProject = this.#projects[0];
+    this.#currentTodo = null;
   }
 
   get projects() {
@@ -16,6 +18,14 @@ export class Controller {
 
   get currentProject() {
     return this.#currentProject;
+  }
+
+  changeCurrentTodo(todoId) {
+    const todoToChange = this.#currentProject.searchTodo(todoId);
+
+    if (todoToChange instanceof Todo) {
+      this.#currentTodo = todoToChange;
+    }
   }
 
   changeCurrentProject(projectId) {
