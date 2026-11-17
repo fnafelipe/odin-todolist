@@ -1,3 +1,5 @@
+
+
 * {
   padding: 0;
   margin: 0;
@@ -32,41 +34,118 @@ body {
 
 .projects-section {
   display: flex;
-  padding: 25px;
   flex-direction: column;
-  background-color: white;
+  gap: 15px;
+  padding: 25px;
 }
 
 .projects-section h1 {
   color: purple;
   font-weight: bold;
-  margin-bottom: 10px;
+}
+
+.projects {
+  display: flex;
+  flex-direction: column;
+}
+
+.projects button {
+  background-color: white;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.projects button:hover {
+  background-color: whitesmoke;
+}
+
+#addproject-btn {
+  background-color: white;
+  border: none;
+  font-size: 20px;
+  color: lightgray;
+  text-align: left;
+}
+
+#addproject-btn:hover {
+  color: gray;
 }
 
 .projects-section h3 {
   color: lightgray;
-  margin-top: 10px;
 }
 
 .todos-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
   grid-area: todos;
-  background-color: whitesmoke;
-  padding: 15px;
+  background-color: purple;
+  padding: 25px;
 }
 
 .todos-section h1 {
-  color: purple;
-  margin: 10px auto;
+  color: gold;
 }
 
-.todos-section h2 {
-  margin-bottom: 10px;
+.todos {
+  display: flex;
+  flex-direction: column;
 }
+
+
+.todos button {
+  background-color: purple;
+  color: white;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.todos button:hover {
+  background-color: rgb(73, 0, 73);
+}
+
+.todo-btns {
+  display: flex;
+  gap: 10px;
+}
+
+#do, #remove {
+  background-color: white;
+  border: none;
+  font-size: 50px;
+}
+
+#do {
+  color: green;
+}
+
+#remove {
+  color: red;
+}
+
+#addtodo-btn {
+  border: none;
+  background-color: purple;
+  font-size: 20px;
+  color: rgb(73, 0, 73);
+  text-align: left;
+}
+
+#addtodo-btn:hover {
+  color: rgb(42, 0, 42);
+}
+
 
 .todos-section h3 {
-  color: lightgray;
-  margin-top: autopx;
+  color: black;
+  margin-top: 10px;
 }
+
 
 .input {
   padding: 25px;
