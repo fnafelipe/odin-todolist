@@ -3,6 +3,8 @@ import { Controller } from "./modules/controller.js";
 const controller = new Controller();
 
 /*
+tests
+
 const todo1 = new Todo(
   "Buy bread",
   "go to the grocery store and buy 6 buns",

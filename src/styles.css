@@ -50,7 +50,7 @@ body {
   gap: 5px;
 }
 
-#project {
+.project {
   display: flex;
   justify-content: space-between;
   background-color: white;
@@ -58,11 +58,11 @@ body {
   font-size: 15px;
 }
 
-#project:hover {
+.project:hover {
   background-color: whitesmoke;
 }
 
-#add-project {
+.add-project {
   border: none;
   background-color: white;
   color: lightgray;
@@ -70,11 +70,11 @@ body {
   font-size: 20px;
 }
 
-#add-project:hover {
+.add-project:hover {
   color: gray;
 }
 
-#remove-project {
+.remove-project {
   display: flex;
   align-items: center;
   color: red;
@@ -100,7 +100,7 @@ body {
   gap: 15px;
 }
 
-#todo {
+.todo {
   display: flex;
   justify-content: space-between;
   background-color: whitesmoke;
@@ -108,7 +108,7 @@ body {
   font-size: 15px;
 }
 
-#todo:hover {
+.todo:hover {
   background-color: lightgray;
 }
 
@@ -120,7 +120,7 @@ body {
   font-size: 20px;
 }
 
-#add-todo {
+.add-todo {
   border: none;
   background-color: whitesmoke;
   color: gray;
@@ -128,15 +128,15 @@ body {
   font-size: 20px;
 }
 
-#add-todo:hover {
+.add-todo:hover {
   color: black;
 }
 
-#do-todo {
+.do-todo {
   color: green;
 }
 
-#remove-todo {
+.remove-todo {
   color: red;
 }
 
