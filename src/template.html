@@ -3,48 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo list</title>
+    <title>Todo List</title>
     <link href="./styles.css" rel="stylesheet" />
   </head>
   <body>
     <div class="container">
-      <div class="page-title">T A S K D O</div>
-      <nav class="projects-section">
+      <div class="pagebar">T A S K D O</div>
+
+      <div class="projects-section">
         <h1>Projects</h1>
-        <div class="projects">
-          <div class="project">
-            work
-            <button id="removeproject-btn">X</button>
-          </div>
+        <nav class="projects">
+          <button id="project">
+            <h2>All</h2>
+            <div id="remove-project">X</div>
+          </button>
+        </nav>
+      </div>
+
+      <div class="todos-section">
+        <h1>All</h1>
+        <nav class="pending-todos">
+          <h1>Pending</h1>
+          <button id="todo">
+            <h2>Clean Room</h2>
+            <div class="todo-btns">
+              <div id="do-todo">V</div>
+              <div id="remove-todo">X</div>
+            </div>
+          </button>
+        </nav>
+      </div>
+
+      <div id="view">
+        <div class="todo-info">
+          <h1 id="title">Clean Room</h1>
+          <h2>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Consequuntur quasi voluptates obcaecati. Aliquam soluta quis commodi
+            itaque ipsa dolorum voluptates inventore eos rem laborum. Totam,
+            nulla iure! Impedit, illum cupiditate.
+          </h2>
+          <h2>02 / 22/ 2026</h2>
+          <h2>Important</h2>
         </div>
-        <button id="addproject-btn">Add Project +</button>
-      </nav>
-      <nav class="todos-section">
-        <h1>Pending</h1>
-        <div class="pending todos">
-          <button>Buy Bread</button>
-        </div>
-        <button id="addtodo-btn">Add Todo +</button>
-        <h1>Done</h1>
-        <div class="done todos"></div>
-      </nav>
-      <main class="input">
-        <h1>Clean House</h1>
-        <h2>Description</h2>
-        <h3>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit laborum
-          temporibus repudiandae velit quo hic modi neque illum corrupti sed
-          fuga harum enim, quam adipisci, ratione est? Placeat, cum magnam?
-        </h3>
-        <h2>Due Date</h2>
-        <h3>10 / 20 / 2026</h3>
-        <h2>Priority</h2>
-        <h3>Important</h3>
-        <div class="todo-btns">
-          <button id="do">V</button>
-          <button id="remove">X</button>
-        </div>
-      </main>
+      </div>
     </div>
   </body>
 </html>
