@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo List</title>
-    <link href="./styles.css" rel="stylesheet" />
   </head>
   <body>
     <div class="container">
@@ -13,27 +12,36 @@
       <div class="projects-section">
         <h1>Projects</h1>
         <nav class="projects">
-          <button class="project">
+          <div class="project">
             <h2>All</h2>
-            <div class="remove-project">X</div>
-          </button>
+            <button class="remove-project">X</button>
+          </div>
         </nav>
         <button class="add-project">Add Project +</button>
       </div>
 
       <div class="todos-section">
-        <h1>All</h1>
+        <h1 class="current-project">All</h1>
+        <h1>Pending</h1>
         <nav class="pending-todos">
-          <h1>Pending</h1>
-          <button class="todo">
+          <div class="todo">
             <h2>Clean Room</h2>
             <div class="todo-btns">
-              <div class="do-todo">V</div>
-              <div class="remove-todo">X</div>
+              <button class="do-todo">V</button>
+              <button class="remove-todo">X</button>
             </div>
-          </button>
+          </div>
         </nav>
         <button class="add-todo">Add Todo +</button>
+        <h1>Done</h1>
+        <nav class="done-todos">
+          <div class="todo">
+            <h2>Buy food</h2>
+            <div class="todo-btns">
+              <button class="remove-todo">X</button>
+            </div>
+          </div>
+        </nav>
       </div>
 
       <div id="view">

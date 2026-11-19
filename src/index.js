@@ -1,6 +1,10 @@
 import { Controller } from "./modules/controller.js";
 
+import "./styles.css";
+
 const controller = new Controller();
+
+const 
 
 /*
 tests

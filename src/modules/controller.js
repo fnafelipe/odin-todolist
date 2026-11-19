@@ -20,6 +20,10 @@ export class Controller {
     return this.#currentProject;
   }
 
+  get currentTodo() {
+    return this.#currentTodo;
+  }
+
   changeCurrentTodo(todoId) {
     const todoToChange = this.#currentProject.searchTodo(todoId);
 
@@ -33,6 +37,7 @@ export class Controller {
 
     if (projectToChange instanceof Project) {
       this.#currentProject = projectToChange;
+      this.#currentTodo = null;
     }
   }
 
@@ -77,6 +82,7 @@ export class Controller {
 
   removeTodoFromProject(todoId) {
     this.#currentProject.removeTodo(todoId);
+    this.#currentTodo = null;
   }
 
   doTodoFromProject(todoId) {
@@ -101,6 +107,7 @@ export class Controller {
         }
 
         this.#projects.splice(this.#projects.indexOf(projectToRemove), 1);
+        this.#currentTodo = null;
       }
     }
   }
