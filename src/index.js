@@ -1,10 +1,28 @@
 import { Controller } from "./modules/controller.js";
 
+import { Interface } from "./modules/interface.js";
+
 import "./styles.css";
 
 const controller = new Controller();
 
-const 
+controller.createProject("home");
+
+controller.addTodoToProject(
+  "clean room",
+  "asdjalksjdklasjdklajdkl jakllkasjdlasjdklasj d adsklsjadklajaslidjalkj dsada",
+  "02/12/2027",
+  "important",
+);
+
+controller.addTodoToProject(
+  "but bread",
+  "asdjalksjdklasjdklajdkl jakllkasjdlasjdklasj d",
+  "03/20/2027",
+  "critical",
+);
+
+const taskdo = new Interface(controller);
 
 /*
 tests

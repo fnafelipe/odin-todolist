@@ -90,14 +90,14 @@ body {
   grid-area: todos;
   background-color: whitesmoke;
   padding: 25px;
-  gap: 25px;
+  gap: 15px;
 }
 
 .todos-section h1 {
   color: purple;
 }
 
-.pending-todos {
+.pending-todos, .done-todos {
   display: flex;
   flex-direction: column;
   gap: 15px;
