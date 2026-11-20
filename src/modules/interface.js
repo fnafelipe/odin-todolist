@@ -3,13 +3,18 @@ export class Interface {
   #addProjectBtn;
   #addTodoBtn;
   #view;
-  #todos;
+  #projects;
+  #pendingTodos;
+  #doneTodos;
 
   constructor(controller) {
     this.#controller = controller;
     this.#addProjectBtn = document.querySelector(".add-project");
     this.#addTodoBtn = document.querySelector(".add-todo");
     this.#view = document.getElementById("view");
-    this.#todos = document.querySelector(".todos-section");
+    this.#pendingTodos = document.querySelector(".pending-todos");
+    this.#doneTodos = document.querySelector(".done-todos");
+    this.#projects = document.querySelector(".projects");
+    console.table(this);
   }
 }
