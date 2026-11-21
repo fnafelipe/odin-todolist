@@ -23,6 +23,14 @@ export class Interface {
     this.#renderProjects();
   }
 
+  #renderTodos() {
+    this.#pendingTodos.replaceChildren();
+    this.#doneTodos.replaceChildren();
+
+    const pendingTodos = this.#controller.currentProject.pendingTodos;
+    const doneTodos = this.#controller.currentProject.doneTodos;
+  }
+
   #renderProjects() {
     this.#projects.replaceChildren();
 
