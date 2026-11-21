@@ -6,7 +6,7 @@ import "./styles.css";
 
 const controller = new Controller();
 
-controller.createProject("home");
+controller.addProject("work");
 
 controller.addTodoToProject(
   "clean room",
@@ -21,6 +21,8 @@ controller.addTodoToProject(
   "03/20/2027",
   "critical",
 );
+
+console.log(controller);
 
 const taskdo = new Interface(controller);
 

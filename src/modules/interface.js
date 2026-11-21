@@ -28,22 +28,43 @@ export class Interface {
 
     const projects = this.#controller.projects;
 
+    for (let projectInfo of projects) {
+      const { project, projectTitle, removeProjectBtn } =
+        this.#createProjectElements();
+
+      this.#addProjectClassesAndContent(
+        project,
+        projectTitle,
+        projectInfo,
+        removeProjectBtn,
+      );
+
+      this.#projects.appendChild(project);
+    }
+
+    console.log(this.#projects);
+  }
+
+  #createProjectElements() {
     const project = document.createElement("div");
-    let projectTitle = document.createElement("h2");
+    const projectTitle = document.createElement("h2");
     const removeProjectBtn = document.createElement("button");
-
-    project.classList.add("project");
-    removeProjectBtn.classList.add("remove-project");
-
     project.appendChild(projectTitle);
     project.appendChild(removeProjectBtn);
 
-    for (let projectInfo of projects) {
-      projectTitle.textContent = "";
+    return { project, projectTitle, removeProjectBtn };
+  }
 
-      project.dataset.id = projectInfo.id;
-      projectTitle.textContent = projectInfo.name;
-
-    }
+  #addProjectClassesAndContent(
+    project,
+    projectTitle,
+    projectInfo,
+    removeProjectBtn,
+  ) {
+    project.classList.add("project");
+    project.dataset.id = projectInfo.id;
+    projectTitle.textContent = projectInfo.title;
+    removeProjectBtn.classList.add("remove-project");
+    removeProjectBtn.textContent = "X";
   }
 }
