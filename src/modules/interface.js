@@ -21,6 +21,7 @@ export class Interface {
 
   #render() {
     this.#renderProjects();
+    this.#renderTodos();
   }
 
   #renderTodos() {
@@ -29,6 +30,66 @@ export class Interface {
 
     const pendingTodos = this.#controller.currentProject.pendingTodos;
     const doneTodos = this.#controller.currentProject.doneTodos;
+
+    for (let pendingTodoInfo of this.#controller.currentProject.pendingTodos) {
+      const { todo, todoTitle, todoBtns, doTodoBtn, removeTodoBtn } =
+        this.#createTodoElements(false);
+
+      this.#addTodoClassesAndContent(
+        todo,
+        todoTitle,
+        todoBtns,
+        doTodoBtn,
+        removeTodoBtn,
+        pendingTodoInfo,
+        false,
+      );
+
+      this.#pendingTodos.appendChild(todo);
+
+      console.log(todo);
+    }
+  }
+
+  #addTodoClassesAndContent(
+    todo,
+    todoTitle,
+    todoBtns,
+    doTodoBtn,
+    removeTodoBtn,
+    todoInfo,
+    isDone,
+  ) {
+    todo.classList.add("todo");
+    todo.dataset.id = todoInfo.id;
+    todoTitle.textContent = todoInfo.title;
+    todoBtns.classList.add("todo-btns");
+    if (!isDone) {
+      doTodoBtn.classList.add("do-todo");
+      doTodoBtn.textContent = "V";
+    }
+    removeTodoBtn.classList.add("remove-todo");
+    removeTodoBtn.textContent = "X";
+  }
+
+  #createTodoElements(isDone) {
+    const todo = document.createElement("div");
+    const todoTitle = document.createElement("h2");
+    const todoBtns = document.createElement("div");
+    const removeTodoBtn = document.createElement("button");
+
+    todo.appendChild(todoTitle);
+    todo.appendChild(todoBtns);
+
+    if (!isDone) {
+      const doTodoBtn = document.createElement("button");
+      todoBtns.appendChild(doTodoBtn);
+      todoBtns.appendChild(removeTodoBtn);
+      return { todo, todoTitle, todoBtns, doTodoBtn, removeTodoBtn };
+    } else {
+      todoBtns.appendChild(removeTodoBtn);
+      return { todo, todoTitle, todoBtns, removeTodoBtn };
+    }
   }
 
   #renderProjects() {

@@ -16,7 +16,7 @@ controller.addTodoToProject(
 );
 
 controller.addTodoToProject(
-  "but bread",
+  "buy bread",
   "asdjalksjdklasjdklajdkl jakllkasjdlasjdklasj d",
   "03/20/2027",
   "critical",
