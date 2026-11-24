@@ -22,7 +22,7 @@ controller.addTodoToProject(
   "critical",
 );
 
-console.log(controller);
+controller.doTodoFromProject(controller.currentProject.todos[1].id);
 
 const taskdo = new Interface(controller);
 

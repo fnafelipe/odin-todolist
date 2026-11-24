@@ -31,7 +31,7 @@ export class Interface {
     const pendingTodos = this.#controller.currentProject.pendingTodos;
     const doneTodos = this.#controller.currentProject.doneTodos;
 
-    for (let pendingTodoInfo of this.#controller.currentProject.pendingTodos) {
+    for (let pendingTodoInfo of pendingTodos) {
       const { todo, todoTitle, todoBtns, doTodoBtn, removeTodoBtn } =
         this.#createTodoElements(false);
 
@@ -46,8 +46,23 @@ export class Interface {
       );
 
       this.#pendingTodos.appendChild(todo);
+    }
 
-      console.log(todo);
+    for (let doneTodoInfo of doneTodos) {
+      const { todo, todoTitle, todoBtns, doTodoBtn, removeTodoBtn } =
+        this.#createTodoElements(true);
+
+      this.#addTodoClassesAndContent(
+        todo,
+        todoTitle,
+        todoBtns,
+        doTodoBtn,
+        removeTodoBtn,
+        doneTodoInfo,
+        true,
+      );
+
+      this.#doneTodos.appendChild(todo);
     }
   }
 
@@ -55,7 +70,7 @@ export class Interface {
     todo,
     todoTitle,
     todoBtns,
-    doTodoBtn,
+    doTodoBtn = undefined,
     removeTodoBtn,
     todoInfo,
     isDone,
@@ -88,7 +103,7 @@ export class Interface {
       return { todo, todoTitle, todoBtns, doTodoBtn, removeTodoBtn };
     } else {
       todoBtns.appendChild(removeTodoBtn);
-      return { todo, todoTitle, todoBtns, removeTodoBtn };
+      return { todo, todoTitle, todoBtns, undefined, removeTodoBtn };
     }
   }
 
