@@ -17,6 +17,21 @@ export class Interface {
     this.#projects = document.querySelector(".projects");
     console.table(this);
     this.#render();
+    this.#bindEvents();
+  }
+
+  #bindEvents() {
+    this.#bindAddBtnsEvents();
+  }
+
+  #bindAddBtnsEvents() {
+    this.#addProjectBtn.addEventListener("click", (event) => {
+      console.log(event.target);
+    });
+
+    this.#addTodoBtn.addEventListener("click", (event) => {
+      console.log(event.target);
+    });
   }
 
   #render() {
@@ -30,6 +45,8 @@ export class Interface {
 
     const currentTodo = this.#controller.currentTodo;
     console.table(currentTodo);
+
+    if (!currentTodo) return;
 
     this.#createTodoViewElements(currentTodo);
   }
