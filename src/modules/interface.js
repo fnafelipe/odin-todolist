@@ -30,15 +30,27 @@ export class Interface {
           console.log("add");
         } else if (event.target.classList.contains("remove-project")) {
           console.log("remove");
-        } else {
+        } else if (event.target.closest("[data-id]")) {
           console.log(event.target.closest("[data-id]"));
           console.log("view");
         }
       });
+
     document
       .querySelector(".todos-section")
       .addEventListener("click", (event) => {
-        console.log(event.target.closest("[data-id]"));
+        console.log(event.target);
+
+        if (event.target.classList.contains("add-todo")) {
+          console.log("add");
+        } else if (event.target.classList.contains("do-todo")) {
+          console.log("do");
+        } else if (event.target.classList.contains("remove-todo")) {
+          console.log("remove");
+        } else if (event.target.closest("[data-id]")) {
+          console.log(event.target.closest("[data-id]"));
+          console.log("view");
+        }
       });
   }
 
