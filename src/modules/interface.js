@@ -22,6 +22,71 @@ export class Interface {
   #render() {
     this.#renderProjects();
     this.#renderTodos();
+    this.#renderTodoView();
+  }
+
+  #renderTodoView() {
+    this.#view.replaceChildren();
+
+    const currentTodo = this.#controller.currentTodo;
+    console.table(currentTodo);
+
+    this.#createTodoViewElements(currentTodo);
+  }
+
+  #createTodoViewElements(currentTodo) {
+    const todoView = document.createElement("div");
+    todoView.classList.add("todo-info");
+    const todoViewTitle = document.createElement("h1");
+    const todoViewDescription = document.createElement("h2");
+    const todoViewDueDate = document.createElement("h2");
+    const todoViewPriority = document.createElement("h2");
+
+    this.#addTodoViewContents(
+      todoView,
+      todoViewTitle,
+      todoViewDescription,
+      todoViewDueDate,
+      todoViewPriority,
+      currentTodo,
+    );
+  }
+
+  #addTodoViewContents(
+    todoView,
+    todoViewTitle,
+    todoViewDescription,
+    todoViewDueDate,
+    todoViewPriority,
+    currentTodo,
+  ) {
+    todoViewTitle.textContent = currentTodo.title;
+    todoViewDescription.textContent = currentTodo.description;
+    todoViewDueDate.textContent = currentTodo.dueDate;
+    todoViewPriority.textContent = currentTodo.priority;
+
+    this.#appendTodoViewNodes(
+      todoView,
+      todoViewTitle,
+      todoViewDescription,
+      todoViewDueDate,
+      todoViewPriority,
+    );
+  }
+
+  #appendTodoViewNodes(
+    todoView,
+    todoViewTitle,
+    todoViewDescription,
+    todoViewDueDate,
+    todoViewPriority,
+  ) {
+    todoView.appendChild(todoViewTitle);
+    todoView.appendChild(todoViewDescription);
+    todoView.appendChild(todoViewDueDate);
+    todoView.appendChild(todoViewPriority);
+
+    this.#view.appendChild(todoView);
   }
 
   #renderTodos() {

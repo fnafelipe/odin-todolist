@@ -77,6 +77,7 @@ export class Controller {
 
     if (newTodo instanceof Todo) {
       this.#currentProject.addTodo(newTodo);
+      this.changeCurrentTodo(newTodo.id);
     }
   }
 
