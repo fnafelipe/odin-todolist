@@ -4,7 +4,6 @@ export class Interface {
   #addTodoBtn;
   #view;
   #projects;
-  #todos;
   #pendingTodos;
   #doneTodos;
 
@@ -15,7 +14,6 @@ export class Interface {
     this.#view = document.getElementById("view");
     this.#pendingTodos = document.querySelector(".pending-todos");
     this.#doneTodos = document.querySelector(".done-todos");
-    this.#todos = document.querySelector(".todos-section");
     this.#projects = document.querySelector(".projects");
     console.table(this);
     this.#render();
@@ -23,12 +21,25 @@ export class Interface {
   }
 
   #bindEvents() {
-    this.#projects.addEventListener("click", (event) => {
-      console.log(event.target);
-    });
-    this.#todos.addEventListener("click", (event) => {
-      console.log(event.target);
-    });
+    document
+      .querySelector(".projects-section")
+      .addEventListener("click", (event) => {
+        console.log(event.target);
+
+        if (event.target.classList.contains("add-project")) {
+          console.log("add");
+        } else if (event.target.classList.contains("remove-project")) {
+          console.log("remove");
+        } else {
+          console.log(event.target.closest("[data-id]"));
+          console.log("view");
+        }
+      });
+    document
+      .querySelector(".todos-section")
+      .addEventListener("click", (event) => {
+        console.log(event.target.closest("[data-id]"));
+      });
   }
 
   #render() {
