@@ -24,34 +24,49 @@ export class Interface {
     document
       .querySelector(".projects-section")
       .addEventListener("click", (event) => {
-        console.log(event.target);
-
         if (event.target.classList.contains("add-project")) {
           console.log("add");
-        } else if (event.target.classList.contains("remove-project")) {
-          console.log("remove");
         } else if (event.target.closest("[data-id]")) {
-          console.log(event.target.closest("[data-id]"));
-          console.log("view");
+          if (event.target.classList.contains("remove-project")) {
+            this.#removeProjectView(
+              event.target.closest("[data-id").dataset.id,
+            );
+          } else {
+            console.log("view");
+          }
         }
       });
 
     document
       .querySelector(".todos-section")
       .addEventListener("click", (event) => {
-        console.log(event.target);
-
         if (event.target.classList.contains("add-todo")) {
           console.log("add");
-        } else if (event.target.classList.contains("do-todo")) {
-          console.log("do");
-        } else if (event.target.classList.contains("remove-todo")) {
-          console.log("remove");
         } else if (event.target.closest("[data-id]")) {
-          console.log(event.target.closest("[data-id]"));
-          console.log("view");
+          if (event.target.classList.contains("do-todo")) {
+            this.#doTodoView(event.target.closest("[data-id]").dataset.id);
+          } else if (event.target.classList.contains("remove-todo")) {
+            this.#removeTodoView(event.target.closest("[data-id]").dataset.id);
+          } else if (event.target.closest("[data-id]")) {
+            console.log("view");
+          }
         }
       });
+  }
+
+  #removeProjectView(projectIdToRemove) {
+    this.#controller.removeProject(projectIdToRemove);
+    this.#render();
+  }
+
+  #doTodoView(todoIdToDo) {
+    this.#controller.doTodoFromProject(todoIdToDo);
+    this.#render();
+  }
+
+  #removeTodoView(todoIdToRemove) {
+    this.#controller.removeTodoFromProject(todoIdToRemove);
+    this.#render();
   }
 
   #render() {
