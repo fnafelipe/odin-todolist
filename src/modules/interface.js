@@ -32,7 +32,9 @@ export class Interface {
               event.target.closest("[data-id").dataset.id,
             );
           } else {
-            console.log("view");
+            this.#changeProjectView(
+              event.target.closest("[data-id").dataset.id,
+            );
           }
         }
       });
@@ -47,8 +49,8 @@ export class Interface {
             this.#doTodoView(event.target.closest("[data-id]").dataset.id);
           } else if (event.target.classList.contains("remove-todo")) {
             this.#removeTodoView(event.target.closest("[data-id]").dataset.id);
-          } else if (event.target.closest("[data-id]")) {
-            console.log("view");
+          } else {
+            this.#changeTodoView(event.target.closest("[data-id]").dataset.id);
           }
         }
       });
@@ -59,6 +61,11 @@ export class Interface {
     this.#render();
   }
 
+  #changeProjectView(projectIdToChange) {
+    this.#controller.changeCurrentProject(projectIdToChange);
+    this.#render();
+  }
+
   #doTodoView(todoIdToDo) {
     this.#controller.doTodoFromProject(todoIdToDo);
     this.#render();
@@ -66,6 +73,11 @@ export class Interface {
 
   #removeTodoView(todoIdToRemove) {
     this.#controller.removeTodoFromProject(todoIdToRemove);
+    this.#render();
+  }
+
+  #changeTodoView(todoIdToChange) {
+    this.#controller.changeCurrentTodo(todoIdToChange);
     this.#render();
   }
 
